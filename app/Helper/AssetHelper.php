@@ -48,9 +48,9 @@ class AssetHelper extends Base
     public function js($filename, $async = false)
     {
         if (isAbsolutePath($filename)) {
-            $dir = dirname(__DIR__,2);
             $filepath = $filename;
 	} else {
+            $dir = dirname(__DIR__,2);
             $filepath = $dir.'/'.$filename;
         }
 
