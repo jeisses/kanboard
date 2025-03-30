@@ -67,8 +67,13 @@ class AssetHelper extends Base
      */
     public function css($filename, $is_file = true, $media = 'screen')
     {
-        $dir = dirname(__DIR__,2);
-        $filepath = $dir.'/'.$filename;
+        if (isAbsolutePath($filename)) {
+            $filepath = $filename;
+	} else {
+            $dir = dirname(__DIR__,2);
+            $filepath = $dir.'/'.$filename;
+        }
+
         return '<link rel="stylesheet" href="'.$this->helper->url->dir().$filename.($is_file ? '?'.filemtime($filepath) : '').'" media="'.$media.'">';
     }
 
